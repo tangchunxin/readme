@@ -20,7 +20,9 @@
 * [9.扩展性](#plug)
 
 <h3 id="info">1.概述</h3>
-## 概述
+
+> 接口是纯数据的交互
+> APP接口是移动设备和业务之间进行通信的途径。实质就是以特定的规则通过接口直接操作数据库的增删改查
 - 请求格式为 `url?c_version=x.x.x&parameter={}`，`parameter` 中字段 `mod` 和 `platform` 的较为固定，
 <font color=red>所以下面只提供 `parameter` 区别传入的参数</font>
 
@@ -68,6 +70,7 @@ response:
   ---|:---:|---
   `mod` | `string` | "Business"
   `act` | `string` | "agent_login_info"
+  `platform`|`string`| android: gfplay , ios: gfplay_ios
   `aid` | `number` | 账号id
   `key` | `string` | 登录用的key
 
@@ -84,12 +87,9 @@ reponse
 
 * <font color=red>`null` - 代表有字段没有赋值</font>
 * <font color=red>`not` - 代表没有该字段</font>
-* <font color=red>`*` - 参数名带星号, 客户端可以连字段都不写</font>
-* <font color=red>注意同和参考的区别：“同”</font>
-
-##### <font color=red>下面只提供 `parameter` 区别传入的参数；下面只提供 `data` 内的返回说明</font>
 
 <h3 id="name">5.命名规范</h3>
+
 - 统一命名：与后端约定好即可（php和js在命名时一般采用下划线风格，而Java中一般采用的是驼峰法），无绝对标准，不要同时存在驼峰"userName"，下划线"phone_number"两种形式就可以了。
 
 - 避免冗余字段：每次在新增接口字段时，注意是否已经存在同一个含义的字段，保持命名一致，不要同时存在"userName"，"username"，"uName"多种同义字段。
@@ -109,10 +109,10 @@ Boolean|	isVip|	是否时Vip用户，1：是，0：否
 
 
 
->浮点型计算可能导致精度丢失，为了避免，可以缩小单位进行存储。例：1.5元，后端会以150分存到数据库
+> 浮点型计算可能导致精度丢失，为了避免，可以缩小单位进行存储。例：1.5元，后端会以150分存到数据库
 
 
-<h3 id="clent">6.瘦客户端</h3>
+<h3 id="client">6.瘦客户端</h3>
 
 - 客户端尽量只负责展示逻辑，不处理业务逻辑
 
@@ -148,12 +148,12 @@ Boolean|	isVip|	是否时Vip用户，1：是，0：否
 - 无用字段清理
 > 每个版本的接口更新后，需要将无用字段进行清理。或者同个接口不同状态下需要返回的字段各不相同的时候，当次请求不需要的字段需要提醒后端不必下发，避免传输无用数据浪费用户流量。
 
-- 
+
 ---
 # ps:
 
 
-* [1 test地址]()
+* [1 请求url地址]()
 `http://test.linfiy.com/mahjong/game_agent/city_agent/index.php`
 
 
