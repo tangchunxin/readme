@@ -1,3 +1,6 @@
+原文：http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html
+openID connect ：https://help.aliyun.com/document_detail/48019.html
+
 一.oauth2客户端和服务端
 
     在详细讲解OAuth 2.0之前，需要了解几个专用名词。它们对读懂后面的讲解，尤其是几张图，至关重要
